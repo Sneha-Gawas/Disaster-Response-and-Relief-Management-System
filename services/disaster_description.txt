@@ -1,0 +1,344 @@
+AI-POWERED BLOCKCHAIN DISASTER RESPONSE SYSTEM
+DATASET DESCRIPTIONS
+
+=================================================
+1. USGS EARTHQUAKE DATASET
+=================================================
+
+Source:
+United States Geological Survey (USGS)
+
+Purpose:
+Provides real-time and historical earthquake information worldwide.
+Used for disaster monitoring, hotspot detection and anomaly detection.
+
+Dataset Type:
+Public API / CSV Feed
+
+Key Attributes:
+
+- place
+  Location where earthquake occurred
+
+- magnitude (mag)
+  Strength of earthquake
+
+- latitude
+  Geographic latitude
+
+- longitude
+  Geographic longitude
+
+- depth
+  Depth of earthquake beneath surface
+
+- time
+  Event occurrence timestamp
+
+Project Usage:
+
+1. Real-time disaster monitoring
+2. HDBSCAN hotspot detection
+3. Isolation Forest anomaly detection
+4. Dashboard visualization
+5. Earthquake severity assessment
+
+Machine Learning Usage:
+
+Input Features:
+- magnitude
+- latitude
+- longitude
+- depth
+
+Algorithms:
+- HDBSCAN
+- Isolation Forest
+
+=================================================
+2. NOAA STORM EVENTS DATASET
+=================================================
+
+Source:
+National Oceanic and Atmospheric Administration (NOAA)
+
+Purpose:
+Contains historical records of weather-related disasters and severe
+storm events across the United States.
+
+Dataset Type:
+CSV Dataset
+
+Key Attributes:
+
+- EVENT_TYPE
+  Type of weather event
+
+- INJURIES_DIRECT
+  Number of directly injured people
+
+- DEATHS_DIRECT
+  Number of direct fatalities
+
+- DAMAGE_PROPERTY
+  Estimated property damage
+
+- DAMAGE_CROPS
+  Estimated crop damage
+
+- STATE
+  State where disaster occurred
+
+Project Usage:
+
+1. Disaster impact analysis
+2. Resource requirement estimation
+3. Relief fund estimation
+4. Historical disaster pattern analysis
+
+Machine Learning Usage:
+
+Input Features:
+- injuries
+- deaths
+- property_damage
+- crop_damage
+
+Algorithms:
+- XGBoost Resource Prediction
+- XGBoost Fund Prediction
+
+=================================================
+3. FEMA DISASTER DECLARATIONS DATASET
+=================================================
+
+Source:
+Federal Emergency Management Agency (FEMA)
+
+Purpose:
+Contains officially declared disasters and emergency declarations.
+
+Dataset Type:
+CSV Dataset / API
+
+Key Attributes:
+
+- declarationType
+  Type of declaration
+
+- incidentType
+  Type of disaster
+
+- state
+  State affected
+
+- designatedArea
+  County or affected area
+
+- incidentBeginDate
+  Disaster start date
+
+Project Usage:
+
+1. Historical disaster records
+2. Disaster classification
+3. Resource planning
+4. Fund planning
+5. Disaster analytics
+
+Machine Learning Usage:
+
+Input Features:
+- disaster_type
+- location
+- incident_date
+
+Algorithms:
+- XGBoost Resource Prediction
+- XGBoost Fund Prediction
+
+=================================================
+4. OPENSTREETMAP DATASET
+=================================================
+
+Source:
+OpenStreetMap (OSM)
+
+Purpose:
+Provides geographic and infrastructure information.
+
+Dataset Type:
+Open Geospatial Data
+
+Key Attributes:
+
+- hospitals
+  Nearby hospitals
+
+- shelters
+  Emergency shelters
+
+- roads
+  Road network information
+
+- emergency facilities
+  Emergency response facilities
+
+Project Usage:
+
+1. Shelter allocation
+2. Resource routing
+3. GIS dashboard
+4. Emergency planning
+5. Infrastructure assessment
+
+Machine Learning Usage:
+
+Input Features:
+- hospital_count
+- shelter_count
+- road_density
+
+Algorithms:
+- Resource Prediction Support
+
+=================================================
+5. RESOURCE DATASET
+=================================================
+
+Generated From:
+NOAA + FEMA + Feature Engineering
+
+Purpose:
+Training dataset for disaster resource prediction model.
+
+Input Features:
+
+- magnitude
+- affected_population
+- property_damage
+- injuries
+- deaths
+
+Target Features:
+
+- food_kits
+- medical_kits
+- shelters_required
+- rescue_teams
+- water_units
+
+Project Usage:
+
+Predicts required disaster relief resources for affected regions.
+
+Machine Learning Algorithm:
+
+XGBoost MultiOutput Regressor
+
+Outputs:
+
+- Food Kits Required
+- Medical Kits Required
+- Shelters Required
+- Rescue Teams Required
+- Water Supply Required
+
+=================================================
+6. FUND DATASET
+=================================================
+
+Generated From:
+NOAA + FEMA + Feature Engineering
+
+Purpose:
+Training dataset for disaster relief fund estimation.
+
+Input Features:
+
+- magnitude
+- affected_population
+- property_damage
+- crop_damage
+- injuries
+- deaths
+
+Target Feature:
+
+- relief_fund
+
+Project Usage:
+
+Predicts required financial assistance and disaster recovery budget.
+
+Machine Learning Algorithm:
+
+XGBoost Regressor
+
+Output:
+
+- Required Relief Fund
+
+=================================================
+DATASET SUMMARY
+=================================================
+
+USGS Dataset
+Purpose:
+Disaster Detection
+
+NOAA Dataset
+Purpose:
+Damage and Impact Analysis
+
+FEMA Dataset
+Purpose:
+Historical Disaster Information
+
+OpenStreetMap Dataset
+Purpose:
+Infrastructure and Shelter Information
+
+Resource Dataset
+Purpose:
+Resource Requirement Prediction
+
+Fund Dataset
+Purpose:
+Relief Fund Estimation
+
+=================================================
+MACHINE LEARNING MAPPING
+=================================================
+
+HDBSCAN
+Input:
+USGS Earthquake Dataset
+
+Output:
+Disaster Hotspots
+
+Isolation Forest
+Input:
+USGS Earthquake Dataset
+
+Output:
+Disaster Anomalies
+
+XGBoost MultiOutput Regressor
+Input:
+Resource Dataset
+
+Output:
+Food Kits
+Medical Kits
+Shelters
+Rescue Teams
+Water Units
+
+XGBoost Regressor
+Input:
+Fund Dataset
+
+Output:
+Relief Fund Estimation
