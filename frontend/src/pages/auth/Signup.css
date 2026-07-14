@@ -1,0 +1,300 @@
+.body-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #0f172a 0%,
+        #1e293b 40%,
+        #4338ca 100%
+    );
+
+    padding: 20px;
+}
+
+/* SIGNUP CARD */
+
+form {
+
+    width: 100%;
+    max-width: 460px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.12
+    );
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    border-radius: 24px;
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 25px 50px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+}
+
+.form-title {
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+
+    text-align: center;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.8
+    );
+
+    font-size: 14px;
+
+    margin-bottom: 15px;
+}
+
+.label-text {
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+
+    display: block;
+}
+
+.input-field {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.25
+    );
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.15
+    );
+
+    color: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: all 0.3s ease;
+
+    box-sizing: border-box;
+}
+
+.input-field::placeholder {
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.7
+    );
+}
+
+.input-field:focus {
+
+    border-color: #818cf8;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.2
+    );
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            129,
+            140,
+            248,
+            0.5
+        );
+}
+
+/* DROPDOWN TEXT COLOR */
+
+.input-field option {
+
+    color: black;
+
+    background: white;
+}
+
+.submit-button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 12px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #4f46e5
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(
+            99,
+            102,
+            241,
+            0.4
+        );
+}
+
+.submit-button:active {
+
+    transform: scale(0.98);
+}
+
+.login-link {
+
+    text-align: center;
+
+    margin-top: 12px;
+
+    color: #c7d2fe;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+.login-link:hover {
+
+    color: white;
+}
+
+.login-link a {
+
+    color: #e0e7ff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.login-link a:hover {
+
+    color: white;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    form {
+
+        max-width: 400px;
+
+        padding: 28px;
+    }
+
+    .form-title {
+
+        font-size: 26px;
+    }
+
+    .input-field {
+
+        padding: 13px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    form {
+
+        max-width: 100%;
+
+        padding: 24px;
+    }
+
+    .form-title {
+
+        font-size: 24px;
+    }
+
+    .form-subtitle {
+
+        font-size: 13px;
+    }
+}

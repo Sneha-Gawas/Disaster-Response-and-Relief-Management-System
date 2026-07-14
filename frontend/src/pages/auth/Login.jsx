@@ -10,6 +10,10 @@ import {
 import API
 from "../../services/api";
 
+import "./Login.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 import {
     useAuth
 } from "../../context/AuthContext";
@@ -32,89 +36,51 @@ function Login() {
         useState("");
 
     const handleLogin =
-    async () => {
+    async (event) => {
+        event.preventDefault();
 
         try {
-
-            const response =
-                await API.post(
-                    "/login",
-                    {
-                        email,
-                        password
-                    }
-                );
-
-            login(
-                response.data
-                .access_token
+            const response = await API.post(
+                "/login",
+                {
+                    email,
+                    password
+                }
             );
 
-            navigate(
-                "/dashboard"
-            );
-
+            login(response.data.access_token);
+            toast.success("Login successful!");
+            navigate("/dashboard");
         } catch {
-
-            alert(
-                "Invalid Email or Password"
-            );
+            toast.error("Invalid email or password");
         }
     };
 
     return (
+        <div className="Login">
+            <form className="LoginForm" onSubmit={handleLogin}>
+                <h2>Login</h2>
 
-        <div>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-            <h2>
-                Login
-            </h2>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                />
 
-            <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) =>
-                    setEmail(
-                        e.target.value
-                    )
-                }
-            />
-
-            <br />
-            <br />
-
-            <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) =>
-                    setPassword(
-                        e.target.value
-                    )
-                }
-            />
-
-            <br />
-            <br />
-
-            <button
-                onClick={
-                    handleLogin
-                }
-            >
-                Login
-            </button>
-
-            <br />
-            <br />
-
-            <Link
-                to="/signup"
-            >
-                Create Account
-            </Link>
-
+                <button type="submit">Login</button>
+                <Link to="/signup">Create Account</Link>
+            </form>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </div>
     );
 }

@@ -1,6 +1,8 @@
 import pandas as pd
+from pathlib import Path
 
-FEMA_FILE = "datasets/DisasterDeclarationsSummaries.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+FEMA_FILE = BASE_DIR / "datasets" / "DisasterDeclarationsSummaries.csv"
 
 
 def fetch_fema_data():

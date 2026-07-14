@@ -1,6 +1,7 @@
 from sklearn.multioutput import MultiOutputRegressor
 from xgboost import XGBRegressor
 import pandas as pd
+from pathlib import Path
 
 from sklearn.model_selection import train_test_split
 from sklearn.multioutput import MultiOutputRegressor
@@ -9,8 +10,13 @@ from xgboost import XGBRegressor
 
 import joblib
 
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "datasets"
+MODEL_DIR = BASE_DIR / "ml_models"
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
+
 df = pd.read_csv(
-    "datasets/resource_dataset.csv"
+    DATA_DIR / "resource_dataset.csv"
 )
 
 X = df[
@@ -55,5 +61,5 @@ model.fit(
 
 joblib.dump(
     model,
-    "ml_models/resource_model.pkl"
+    MODEL_DIR / "resource_model.pkl"
 )

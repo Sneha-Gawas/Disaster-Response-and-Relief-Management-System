@@ -1,7 +1,9 @@
 import pandas as pd
 import re
+from pathlib import Path
 
-NOAA_FILE = "datasets/StormEvents_details.csv"
+BASE_DIR = Path(__file__).resolve().parent.parent
+NOAA_FILE = BASE_DIR / "datasets" / "StormEvents_details.csv"
 
 
 def _parse_damage(val):

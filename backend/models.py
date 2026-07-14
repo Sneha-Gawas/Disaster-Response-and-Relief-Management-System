@@ -5,6 +5,7 @@ from sqlalchemy import Integer
 from sqlalchemy import Float
 from sqlalchemy import String
 from sqlalchemy import DateTime
+from sqlalchemy import Boolean
 
 from datetime import datetime
 
@@ -36,6 +37,31 @@ class User(Base):
     role = Column(
         String
     )
+
+
+class VolunteerProfile(Base):
+
+    __tablename__ = "volunteer_profiles"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, nullable=False)
+    skills = Column(String, default="General Support")
+    location = Column(String, default="Unknown")
+    availability = Column(String, default="Available")
+    is_active = Column(Boolean, default=True)
+
+
+class OrganizationProfile(Base):
+
+    __tablename__ = "organization_profiles"
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, nullable=False)
+    location = Column(String, default="Unknown")
+    contact = Column(String, default="")
+    needs = Column(String, default="")
+    category = Column(String, default="General")
+    is_active = Column(Boolean, default=True)
 
 
 class DisasterEvent(Base):

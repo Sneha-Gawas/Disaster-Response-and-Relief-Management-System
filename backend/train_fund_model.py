@@ -1,4 +1,5 @@
 import pandas as pd
+from pathlib import Path
 
 from sklearn.model_selection import train_test_split
 
@@ -6,8 +7,13 @@ from xgboost import XGBRegressor
 
 import joblib
 
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "datasets"
+MODEL_DIR = BASE_DIR / "ml_models"
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
+
 df = pd.read_csv(
-    "datasets/fund_dataset.csv"
+    DATA_DIR / "fund_dataset.csv"
 )
 
 X = df[
@@ -43,5 +49,5 @@ model.fit(
 
 joblib.dump(
     model,
-    "ml_models/fund_model.pkl"
+    MODEL_DIR / "fund_model.pkl"
 )

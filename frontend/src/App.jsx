@@ -5,6 +5,7 @@ import {
     Navigate
 } from "react-router-dom";
 
+import Home from "./components/Homepage/Home";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 
@@ -22,8 +23,8 @@ import Profile from "./pages/users/Profile";
 import Volunteers from "./pages/users/Volunteers";
 
 import Organizations from "./pages/users/Organizations";
-import BlockchainDashboard from "./pages/blockchain/BlockchainDashboard";
-import MainLayout from "./layouts/MainLayout";
+import OperationsCenter from "./pages/operations/OperationsCenter";
+import MainLayout from "./layouts/MainLayout"
 function App() {
 
     return (
@@ -34,12 +35,12 @@ function App() {
 
                 <Route
                     path="/"
-                    element={
-                        <Navigate
-                            to="/login"
-                            replace
-                        />
-                    }
+                    element={<Home />}
+                />
+
+                <Route
+                    path="/home"
+                    element={<Home />}
                 />
 
                 <Route
@@ -64,17 +65,7 @@ function App() {
                     }
                 />
 
-                <Route
-                    path="/earthquakes"
-                    element={
-                        <ProtectedRoute>
-                          <MainLayout>
-                            <Earthquakes />
-                            </MainLayout>
-                        </ProtectedRoute>
-                    }
-                />
-
+               
                 <Route
                     path="/hotspots"
                     element={
@@ -121,16 +112,6 @@ function App() {
 />
 
 <Route
- path="/blockchain"
- element={
-  <ProtectedRoute>
-    <MainLayout>
-<BlockchainDashboard/>
-    </MainLayout>
-  </ProtectedRoute>
- }
-/>
-<Route
  path="/profile"
  element={
   <ProtectedRoute>
@@ -158,6 +139,17 @@ function App() {
   <ProtectedRoute>
     <MainLayout>
      <Organizations />
+    </MainLayout>
+  </ProtectedRoute>
+ }
+/>
+
+<Route
+ path="/operations"
+ element={
+  <ProtectedRoute>
+    <MainLayout>
+      <OperationsCenter />
     </MainLayout>
   </ProtectedRoute>
  }

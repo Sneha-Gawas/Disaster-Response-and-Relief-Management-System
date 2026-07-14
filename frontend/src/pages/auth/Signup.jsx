@@ -6,10 +6,18 @@ import API
 from "../../services/api";
 
 import {
-    Link
+    Link,
+    useNavigate
 } from "react-router-dom";
 
+import "./Signup.css";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+
 function Signup() {
+
+    const navigate =
+        useNavigate();
 
     const [form,
         setForm] =
@@ -25,126 +33,93 @@ function Signup() {
         });
 
     const register =
-    async () => {
+    async (event) => {
+        event.preventDefault();
 
         try {
-
             await API.post(
                 "/signup",
                 form
             );
 
-            alert(
-                "Registration Successful"
-            );
-
+            toast.success("Registration successful!");
+            navigate("/login");
         } catch {
-
-            alert(
-                "Registration Failed"
-            );
+            toast.error("Registration failed. Please try again.");
         }
     };
 
     return (
+        <div className="body-container">
+            <form onSubmit={register}>
+                <h2 className="form-title">Signup</h2>
 
-        <div>
+                <input
+                    className="input-field"
+                    placeholder="Full Name"
+                    value={form.full_name}
+                    required
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            full_name:
+                                e.target.value
+                        })
+                    }
+                />
 
-            <h2>
-                Signup
-            </h2>
+                <input
+                    className="input-field"
+                    type="email"
+                    placeholder="Email"
+                    value={form.email}
+                    required
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            email:
+                                e.target.value
+                        })
+                    }
+                />
 
-            <input
-                placeholder="Full Name"
-                onChange={(e) =>
-                    setForm({
-                        ...form,
-                        full_name:
-                            e.target.value
-                    })
-                }
-            />
+                <input
+                    className="input-field"
+                    type="password"
+                    placeholder="Password"
+                    value={form.password}
+                    required
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            password:
+                                e.target.value
+                        })
+                    }
+                />
 
-            <br />
-            <br />
+                <select
+                    className="input-field"
+                    value={form.role}
+                    onChange={(e) =>
+                        setForm({
+                            ...form,
+                            role:
+                                e.target.value
+                        })
+                    }
+                >
+                    <option value="ADMIN">Admin</option>
+                    <option value="AUTHORITY">Authority</option>
+                    <option value="NGO">NGO</option>
+                    <option value="VOLUNTEER">Volunteer</option>
+                </select>
 
-            <input
-                placeholder="Email"
-                onChange={(e) =>
-                    setForm({
-                        ...form,
-                        email:
-                            e.target.value
-                    })
-                }
-            />
+                <button className="submit-button" type="submit">Register</button>
 
-            <br />
-            <br />
-
-            <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) =>
-                    setForm({
-                        ...form,
-                        password:
-                            e.target.value
-                    })
-                }
-            />
-
-            <br />
-            <br />
-
-            <select
-                onChange={(e) =>
-                    setForm({
-                        ...form,
-                        role:
-                            e.target.value
-                    })
-                }
-            >
-
-                <option value="ADMIN">
-                    Admin
-                </option>
-
-                <option value="AUTHORITY">
-                    Authority
-                </option>
-
-                <option value="NGO">
-                    NGO
-                </option>
-
-                <option value="VOLUNTEER">
-                    Volunteer
-                </option>
-
-            </select>
-
-            <br />
-            <br />
-
-            <button
-                onClick={
-                    register
-                }
-            >
-                Register
-            </button>
-
-            <br />
-            <br />
-
-            <Link
-                to="/login"
-            >
-                Login
-            </Link>
-
+                <Link className="login-link" to="/login">Login</Link>
+            </form>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </div>
     );
 }
